@@ -1,4 +1,5 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const dbConnect = require("./config/dbConnect");
 const {
   errorHandler,
@@ -7,6 +8,9 @@ const {
 const userRoute = require("./routes/users/usersRoute");
 
 const app = express();
+
+//env
+dotenv.config();
 
 //connection to database
 dbConnect();
