@@ -23,7 +23,7 @@ app.use(express.json());
 app.use("/api/users", userRoute);
 
 //income routes
-app.use('/api/income',incomeRoute)
+app.use("/api/income", incomeRoute);
 
 //errorHandlers
 app.use(notFoundHandler);
