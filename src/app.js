@@ -7,6 +7,7 @@ const {
 } = require("./middlewares/errorMiddleware");
 const userRoute = require("./routes/users/usersRoute");
 const incomeRoute = require("./routes/incomes/incomeRoute");
+const { expenseRoute } = require("./routes/expenses/expenseRoute");
 
 const app = express();
 
@@ -24,6 +25,9 @@ app.use("/api/users", userRoute);
 
 //income routes
 app.use("/api/income", incomeRoute);
+
+//expense routes
+app.use("/api/expense", expenseRoute);
 
 //errorHandlers
 app.use(notFoundHandler);
