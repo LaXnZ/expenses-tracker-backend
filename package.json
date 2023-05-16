@@ -19,6 +19,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
+    "mongoose-paginate-v2": "^1.7.1",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
