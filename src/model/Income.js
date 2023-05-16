@@ -26,7 +26,15 @@ const incomeSchema = new mongoose.Schema(
       required: [true, "User ID is required"],
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  }
 );
 
 //pagination
