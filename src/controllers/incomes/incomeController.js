@@ -38,8 +38,43 @@ const fetchIncomeDetailsController = expressAsyncHandler(async (req, res) => {
   }
 });
 
+//update income
+const updateIncomeController = expressAsyncHandler(async (req, res) => {
+  const { id } = req?.params; //getting the mongodb id of that particular income that we want to update
+  const { title, amount, description } = req?.body;
+
+  try {
+    const income = await Income.findByIdAndUpdate(
+      id,
+      {
+        title,
+        description,
+        amount,
+      },
+      { new: true }
+    );
+    res.json(income);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//delecte income
+const deleteIncomeController = expressAsyncHandler(async (req, res) => {
+  const { id } = req?.params;
+
+  try {
+    const income = await Income.findByIdAndDelete(id);
+    res.json(income);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 module.exports = {
   createIncomeController,
   fetchAllIncomeController,
   fetchIncomeDetailsController,
+  updateIncomeController,
+  deleteIncomeController,
 };
