@@ -23,7 +23,7 @@ const fetchAllExpenseController = expressAsyncHandler(async (req, res) => {
   try {
     const expense = await Expense.paginate(
       {},
-      { limit: 10, page: Number(page), populate: "user" }
+      { limit: 10, page: Number(page), populate: "user" } // page and size both should return
     );
     res.json(expense);
   } catch (error) {

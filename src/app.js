@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const dbConnect = require("./config/dbConnect");
 const {
   errorHandler,
@@ -19,6 +20,7 @@ dbConnect();
 
 //middlewares
 app.use(express.json());
+app.use(cors());
 
 //users routes
 app.use("/api/users", userRoute);
