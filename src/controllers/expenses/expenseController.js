@@ -3,13 +3,13 @@ const Expense = require("../../model/Expense");
 
 //create expense
 const createExpenseController = expressAsyncHandler(async (req, res) => {
-  const { title, amount, description, user } = req?.body;
+  const { title, amount, description } = req.body;
   try {
     const expense = await Expense.create({
       title,
       amount,
       description,
-      user,
+      user: req?.user?._id,
     });
     res.json(expense);
   } catch (error) {
@@ -45,7 +45,7 @@ const fetchExpenseDetailsController = expressAsyncHandler(async (req, res) => {
 //update expense
 const updateExpenseController = expressAsyncHandler(async (req, res) => {
   const { id } = req?.params;
-  const { title, amount, description } = req?.body;
+  const { title, amount, description } = req.body;
 
   try {
     const expense = await Expense.findByIdAndUpdate(
