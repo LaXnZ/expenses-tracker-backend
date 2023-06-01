@@ -9,6 +9,9 @@ const {
 const userRoute = require("./routes/users/usersRoute");
 const incomeRoute = require("./routes/incomes/incomeRoute");
 const { expenseRoute } = require("./routes/expenses/expenseRoute");
+const {
+  accountStatsRoute,
+} = require("./routes/accountStats/accountStatsRoute");
 
 const app = express();
 
@@ -24,6 +27,9 @@ app.use(cors());
 
 //users routes
 app.use("/api/users", userRoute);
+
+//account statistics routes
+app.use("/", accountStatsRoute);
 
 //income routes
 app.use("/api/income", incomeRoute);
