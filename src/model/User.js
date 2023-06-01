@@ -23,8 +23,21 @@ const userSchema = new mongoose.Schema(
       minlength: [8, "Password must be at least 8 characters long"],
     },
   },
-  { timestamps: true }
+  { toObject: { virtuals: true }, toJSON: { virtuals: true }, timestamps: true }
 );
+
+//virtual property
+userSchema.virtual("expenses", {
+  ref: "Expense",
+  foreignField: "user",
+  localField: "_id",
+});
+
+userSchema.virtual("incomes", {
+  ref: "Income",
+  foreignField: "user",
+  localField: "_id",
+});
 
 //hash password
 userSchema.pre("save", async function (next) {
@@ -38,9 +51,9 @@ userSchema.pre("save", async function (next) {
 });
 
 //verify password
-userSchema.methods.isPasswordMatch = async function(enteredPassword){
+userSchema.methods.isPasswordMatch = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
-}
+};
 
 //compile schema into model
 const User = mongoose.model("User", userSchema);

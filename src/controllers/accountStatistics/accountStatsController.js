@@ -8,6 +8,7 @@ const accountStatsController = expressAsyncHandler(async (req, res) => {
     const expenseStats = await Expense.aggregate([
       //filterin by amount
       { $match: { amount: { $gte: 0 } } },
+
       //grouping by id and calculate the average, total, min, max and total records
       {
         $group: {

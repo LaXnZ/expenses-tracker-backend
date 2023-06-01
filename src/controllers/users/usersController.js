@@ -47,4 +47,42 @@ const loginUserController = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, fetchUsers, loginUserController };
+//user profile
+const userProfileController = expressAsyncHandler(async (req, res) => {
+  try {
+    const profile = await User.findById(req?.user?._id).populate([
+      "expenses",
+      "incomes",
+    ]);
+
+    res.json(profile);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+//update user profile
+const updateUserProfileController = expressAsyncHandler(async (req, res) => {
+  try {
+    const profile = await User.findByIdAndUpdate(
+      req?.user?._id,
+      {
+        firstname: req?.body?.firstname,
+        lastname: req?.body?.lastname,
+        email: req?.body?.email,
+      },
+      { new: true, runValidators: true }
+    );
+    res.json(profile);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+module.exports = {
+  registerUser,
+  fetchUsers,
+  loginUserController,
+  userProfileController,
+  updateUserProfileController,
+};
