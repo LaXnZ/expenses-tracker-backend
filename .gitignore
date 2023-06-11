@@ -2,3 +2,6 @@
 yarn.lock
 package-lock.json
 .env
+
+#tests
+/coverage

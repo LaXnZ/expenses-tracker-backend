@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
-    "watch": "nodemon src/server.js"
+    "watch": "nodemon src/server.js",
+    "test": "jest --coverage",
+    "build": "npm i"
   },
   "keywords": [
     "MERN"
@@ -24,6 +26,7 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22"
   }
 }
