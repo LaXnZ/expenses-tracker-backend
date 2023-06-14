@@ -22,8 +22,12 @@ dotenv.config();
 dbConnect();
 
 //middlewares
+const corsOptions = {
+    origin: "https://saverly-expense-tracker-frontend.onrender.com", // frontend URI (ReactJS)
+}
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 //users routes
 app.use("/api/users", userRoute);
