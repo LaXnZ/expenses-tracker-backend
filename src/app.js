@@ -23,7 +23,7 @@ dbConnect();
 
 //middlewares
 const corsOptions = {
-    origin: "https://saverly-expense-tracker-frontend.onrender.com", // frontend URI (ReactJS)
+    origin: "https://frontend-expense-tracker.vercel.app", // frontend URI (ReactJS)
 }
 
 app.use(express.json());
